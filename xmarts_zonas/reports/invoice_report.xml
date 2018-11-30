@@ -21,21 +21,22 @@
             <tr>
               <td rowspan="7" aling="center" style="positoin:relative;">
                 <span>
-                  <img src="/interkey/static/src/img/Interkey.png" style="max-height: 120px; width:120px;"/>
+                  <img src="/xmarts_zonas/static/src/img/Interkey.png" style="max-height: 120px; width:120px;"/>
                 </span>
             </td> 
-            <td rowspan="6" width="4%">
+            <td rowspan="6" width="3%">
             </td>
-            <td colspan="9" align="left" valign="middle" width="35%">
+            <td colspan="9" align="left" valign="middle" width="45%">
               <span style="color: #000000; font-family: Arial; font-size: 18px;"><strong><span t-esc="company.name"/></strong></span>
           </td>
-            <td rowspan="6" width="15%" >
+            <td rowspan="6" width="10%" >
             </td>
             <td colspan="4" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Factura: </span><strong><span t-field="o.move_name"/></strong></td>
           </tr>
 
           <tr>
-            <td colspan="9" align="left" valign="middle"><span style="color: #000000; font-family: Arial;"><span t-field="o.company_emitter_id.partner_id.street"/></span>
+            <td colspan="9" align="left" valign="middle">
+            <span style="color: #000000; font-family: Arial;"><span t-field="o.company_emitter_id.partner_id.street"/></span>
             <span t-if="o.company_emitter_id.partner_id.l10n_mx_street3"><span t-field="o.company_emitter_id.partner_id.l10n_mx_street3"/></span>
             <span t-if="o.company_emitter_id.partner_id.l10n_mx_street4"><span t-field="o.company_emitter_id.partner_id.l10n_mx_street4"/></span>
             <span t-field="o.company_emitter_id.colonia_sat_id.name"/>
@@ -86,7 +87,7 @@
                   <td style="width: 37.7333px;" align="left" valign="bottom"><span style="color: #000000; font-family: Arial;"></span></td>
                 </tr>
                 <tr>
-                  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; width: 320.1px;" colspan="9" align="left" valign="middle" height="18"><span style="color: #000000; font-family: Arial;">Colonia: </span><span t-field="o.partner_id.colonia_sat_id.name"/></td>
+                  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; width: 320.1px;" colspan="9" align="left" valign="middle" height="18"><span style="color: #000000; font-family: Arial;"> </span><span t-field="o.partner_id.colonia_sat_id.name"/></td>
                   <td style="border-bottom: 1px solid #000000; width: 217.35px;" colspan="6" align="left" valign="middle"><span style="color: #000000; font-family: Arial;">Ciudad: </span>
                   <span t-field="o.partner_id.township_sat_id.name"/>
                   <span t-field="o.partner_id.state_id.name"/>,
@@ -96,8 +97,15 @@
                 </tr>
                 <tr>
                   <td style="border-top: 1px solid #000000; border-left: 1px solid #000000; width: 537.45px;" colspan="15" rowspan="2" align="left" valign="middle">
-                    <span style="color: #000000; font-family: Arial;" t-if="o.partner_shipping_id">Direccion de Entrega: </span><span t-field="o.partner_shipping_id.street"/><br/> Col <span t-field="o.partner_shipping_id.street2"/> En <span t-field="o.partner_shipping_id.city"/>, <span t-field="o.partner_shipping_id.state_id.name"/> C.P 
-                    <span t-field="o.partner_shipping_id.zip"/>
+                    <span style="color: #000000; font-family: Arial;" t-if="o.partner_shipping_id">Direccion de Entrega: </span>
+                    <span style="color: #000000; font-family: Arial;"><span t-field="o.partner_shipping_id.street"/></span>
+                    <span t-if="o.partner_shipping_id.l10n_mx_street3"><span t-field="o.partner_shipping_id.l10n_mx_street3"/></span>
+                    <span t-if="o.partner_shipping_id.l10n_mx_street4"><span t-field="o.partner_shipping_id.l10n_mx_street4"/></span>
+                    <span t-field="o.partner_shipping_id.colonia_sat_id.name"/>
+                    CP. <span t-field="o.partner_shipping_id.zip_sat_id.code"/><br />
+                    <span style="color: #000000; font-family: Arial;"><span t-field="o.partner_shipping_id.locality_sat_id.name"/>, 
+                    <span t-field="o.partner_shipping_id.state_id.name"/>, 
+                    <span t-field="o.partner_shipping_id.country_id.name"/></span>
                   </td>
                   <td style="border-right: 1px solid #000000; width: 151.817px;" colspan="4" rowspan="2" align="left" valign="middle">
                     <span style="color: #000000; font-family: Arial;">Zona: </span><span t-field="o.partner_shipping_id.zone"/>
@@ -179,10 +187,16 @@
                          <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
                        </td>
                      </tr>
+                     <tr class="border-black">
+                        <td ><strong>Moneda</strong></td>
+                        <td class="text-right">
+                         <span t-field="o.currency_id.name"/> (<span t-field="o.currency_id.sat_currency_id.name"/>)
+                       </td>
+                     </tr>
                    </table>
                  </div>
                </div>
-                  <div style="width:50%; font-family:Arial, sans-serif;font-size:9pt; font-style:italic; text-align:left; ">Total con letra: <span style="text-transform: initial;" t-field="o.amount_to_text"/></div>
+                  <div style="width:70%; font-family:Arial, sans-serif;font-size:9pt; font-style:italic; text-align:left; margin-top: -40px;">Total con letra: <span style="text-transform: initial;" t-field="o.amount_to_text"/></div>
 
               <table style=" border:1px solid gray; width:100%;" >
                 <tr>
